@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VHi-RL-amr">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="Main" id="BYZ-38-t0r" customClass="MainVC" customModule="esp32alexSwPool" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wzS-MB-ymC">
+                                <rect key="frame" x="0.0" y="92" width="414" height="726"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sRU-bI-Yvz">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="aBc-mq-ZqM"/>
+                                    <barButtonItem title="Сброс" id="3LF-p5-GG4">
+                                        <connections>
+                                            <action selector="resetBtn:" destination="BYZ-38-t0r" id="xlH-1z-ydN"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Сохр EEPROM" id="wTQ-1m-hhK">
+                                        <connections>
+                                            <action selector="saveEEPROMBtn:" destination="BYZ-38-t0r" id="qkC-96-jSX"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="Uo8-J1-nWl"/>
+                                    <barButtonItem systemItem="refresh" id="Yg6-2y-x59">
+                                        <connections>
+                                            <action selector="refreshBtn:" destination="BYZ-38-t0r" id="QcW-He-cBJ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="L0o-JN-HfC"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wzS-MB-ymC" secondAttribute="bottom" constant="44" id="AK1-b1-EB2"/>
+                            <constraint firstItem="wzS-MB-ymC" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Yex-nq-Xea"/>
+                            <constraint firstItem="wzS-MB-ymC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uoR-8a-KxM"/>
+                            <constraint firstItem="wzS-MB-ymC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xIX-Tq-DXC"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Главная" id="IT1-Sy-fDc">
+                        <barButtonItem key="rightBarButtonItem" title="Конфиг" id="PDd-Oj-Kaq">
+                            <connections>
+                                <segue destination="vkn-xe-cFV" kind="show" id="psI-77-TDL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="wzS-MB-ymC" id="8CN-Zy-jWF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="168.11594202898553" y="3.3482142857142856"/>
+        </scene>
+        <!--Конфиг-->
+        <scene sceneID="REP-I6-vnw">
+            <objects>
+                <viewController id="vkn-xe-cFV" customClass="ConfigVC" customModule="esp32alexSwPool" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aWR-UR-zys">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="5yg-Bn-5Wc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Конфиг" id="02a-fY-lsW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yMr-Ht-YYV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="947.82608695652186" y="3.3482142857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="W4R-Za-v3r">
+            <objects>
+                <navigationController id="VHi-RL-amr" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fh4-uh-81M">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="FmB-4v-A7B"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cia-0h-UXE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-630" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
