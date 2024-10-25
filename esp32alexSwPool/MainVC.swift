@@ -131,7 +131,7 @@ class MainVC: FormViewController {
 //                    print(self.state)
                     self.form.setValues(state)
                     self.tableView?.reloadData()
-                    self.connectBtn.tintColor = .green
+                    self.connectBtn.tintColor = .systemGreen
                 }
             } else {
                 self.connectBtn.tintColor = .red
