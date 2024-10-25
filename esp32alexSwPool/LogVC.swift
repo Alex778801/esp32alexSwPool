@@ -9,18 +9,21 @@ import UIKit
 
 var log = ""
 
-func logger(_ msg: String!) {
+func logger(_ type: String!, _ msg: String!) {
     let dt = Date()
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd hh:mm:ss.SSSS"
     let dtf = formatter.string(from: dt)
-    log = log + "⚡ --- \(dtf) ---\n\(msg!)\n\n"
+    log = log + "⚡ --- \(dtf) ---\n! \(type!)\n\(msg!)\n\n"
 }
 
 class LogVC: UIViewController {
     
-    @IBOutlet var logTV: UITextView!
+    @IBAction func copyBtn(_ sender: Any) {
+        UIPasteboard.general.string = log
+    }
     
+    @IBOutlet var logTV: UITextView!
     
     @IBAction func refreshBtn(_ sender: Any) {
         logTV.text = log

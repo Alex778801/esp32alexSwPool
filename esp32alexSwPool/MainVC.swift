@@ -16,7 +16,7 @@ func sendCommand(_ cmd: String) {
     AF.request(Settings.shared.addr + "/exec?cmd=\(cmd)", method: .get)
       .authenticate(username: Settings.shared.login, password: Settings.shared.pwd)
       .response { response in
-          logger(response.debugDescription)
+          logger("http - cmd", response.debugDescription)
       }
 }
 
@@ -65,7 +65,7 @@ class MainVC: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        logger("Start")
+        logger("", "Start")
         
         tableView?.frame = CGRect(x: 0, y: (self.tableView?.frame.origin.y)!, width: (self.tableView?.frame.size.width)!-20, height: (self.tableView?.frame.size.height)!)
     
@@ -112,7 +112,7 @@ class MainVC: FormViewController {
     func refreshData() {
         struct DecodableType: Decodable { let url: String }
         AF.request(Settings.shared.addr).responseString() { response in
-            logger(response.debugDescription)
+            logger("http - refresh", response.debugDescription)
             if let data = response.value?.data(using: .utf8) {
                 if let json = try? JSON(data: data) {
 //                    print(json)
