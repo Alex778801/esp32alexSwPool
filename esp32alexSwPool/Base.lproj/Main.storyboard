@@ -86,11 +86,58 @@
                         <viewLayoutGuide key="safeArea" id="5yg-Bn-5Wc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Настройки" id="02a-fY-lsW"/>
+                    <navigationItem key="navigationItem" title="Настройки" id="02a-fY-lsW">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="list.bullet.clipboard" catalog="system" id="zAJ-TV-cRY">
+                            <connections>
+                                <segue destination="y1r-3K-2D1" kind="show" id="i3H-7G-UYU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMr-Ht-YYV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="947.82608695652186" y="3.3482142857142856"/>
+        </scene>
+        <!--Журнал-->
+        <scene sceneID="dq6-Nx-kpX">
+            <objects>
+                <viewController title="Журнал" id="y1r-3K-2D1" customClass="LogVC" customModule="esp32alexSwPool" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oev-m3-24x">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hfU-5l-d7F">
+                                <rect key="frame" x="20" y="101" width="374" height="761"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rNg-KD-uC0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hfU-5l-d7F" firstAttribute="leading" secondItem="rNg-KD-uC0" secondAttribute="leading" constant="20" id="8sh-yC-h0C"/>
+                            <constraint firstItem="rNg-KD-uC0" firstAttribute="trailing" secondItem="hfU-5l-d7F" secondAttribute="trailing" constant="20" id="Kuu-TQ-KCJ"/>
+                            <constraint firstItem="hfU-5l-d7F" firstAttribute="top" secondItem="rNg-KD-uC0" secondAttribute="top" constant="9" id="OVQ-RB-enQ"/>
+                            <constraint firstItem="hfU-5l-d7F" firstAttribute="bottom" secondItem="rNg-KD-uC0" secondAttribute="bottom" id="fed-xS-ewj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="sdU-Cj-ZhQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="xfG-jz-4ld">
+                            <connections>
+                                <action selector="refreshBtn:" destination="y1r-3K-2D1" id="74I-O4-5bv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="logTV" destination="hfU-5l-d7F" id="98p-La-3Cz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kQX-dz-clj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1718.840579710145" y="3.3482142857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="W4R-Za-v3r">
@@ -112,6 +159,10 @@
     <resources>
         <image name="eye" catalog="system" width="128" height="79"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
+        <image name="list.bullet.clipboard" catalog="system" width="98" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

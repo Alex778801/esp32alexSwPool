@@ -16,7 +16,7 @@ func sendCommand(_ cmd: String) {
     AF.request(Settings.shared.addr + "/exec?cmd=\(cmd)", method: .get)
       .authenticate(username: Settings.shared.login, password: Settings.shared.pwd)
       .response { response in
-          debugPrint(response)
+          logger(response.debugDescription)
       }
 }
 
@@ -60,8 +60,12 @@ class MainVC: FormViewController {
     
     private var setupFinished = false;
     
+    var refreshTimer = Timer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        logger("Start")
         
         tableView?.frame = CGRect(x: 0, y: (self.tableView?.frame.origin.y)!, width: (self.tableView?.frame.size.width)!-20, height: (self.tableView?.frame.size.height)!)
     
@@ -86,13 +90,16 @@ class MainVC: FormViewController {
             .onCellSelection{ _,_ in sendCommand("auto|0|t|\(state["targetTemp"]!)") }
         
         refreshData()
-        DispatchQueue.main.asyncAfter(deadline: .now() + Settings.shared.refreshPeriod) {
-            if Settings.shared.autoRefresh {
+        
+        if Settings.shared.autoRefresh {
+            refreshTimer = Timer.scheduledTimer(withTimeInterval: Settings.shared.refreshPeriod, repeats: true, block: { _ in
                 self.refreshData()
-            }
+            })
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { self.setupFinished = true }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.setupFinished = true
+        }
     
     }
     
@@ -105,6 +112,7 @@ class MainVC: FormViewController {
     func refreshData() {
         struct DecodableType: Decodable { let url: String }
         AF.request(Settings.shared.addr).responseString() { response in
+            logger(response.debugDescription)
             if let data = response.value?.data(using: .utf8) {
                 if let json = try? JSON(data: data) {
 //                    print(json)
