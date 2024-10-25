@@ -56,13 +56,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Главная" id="IT1-Sy-fDc">
-                        <barButtonItem key="rightBarButtonItem" title="Конфиг" id="PDd-Oj-Kaq">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="eye" catalog="system" id="JAF-69-ld4">
+                            <connections>
+                                <action selector="connectBtnClick:" destination="BYZ-38-t0r" id="iOe-WS-zBT"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Конфиг" image="gearshape" catalog="system" id="PDd-Oj-Kaq">
                             <connections>
                                 <segue destination="vkn-xe-cFV" kind="show" id="psI-77-TDL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="connectBtn" destination="JAF-69-ld4" id="Cc3-zJ-cX9"/>
                         <outlet property="tableView" destination="wzS-MB-ymC" id="8CN-Zy-jWF"/>
                     </connections>
                 </viewController>
@@ -70,7 +76,7 @@
             </objects>
             <point key="canvasLocation" x="168.11594202898553" y="3.3482142857142856"/>
         </scene>
-        <!--Конфиг-->
+        <!--Настройки-->
         <scene sceneID="REP-I6-vnw">
             <objects>
                 <viewController id="vkn-xe-cFV" customClass="ConfigVC" customModule="esp32alexSwPool" customModuleProvider="target" sceneMemberID="viewController">
@@ -80,7 +86,7 @@
                         <viewLayoutGuide key="safeArea" id="5yg-Bn-5Wc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Конфиг" id="02a-fY-lsW"/>
+                    <navigationItem key="navigationItem" title="Настройки" id="02a-fY-lsW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMr-Ht-YYV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -104,6 +110,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="eye" catalog="system" width="128" height="79"/>
+        <image name="gearshape" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

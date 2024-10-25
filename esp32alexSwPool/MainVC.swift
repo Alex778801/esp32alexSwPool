@@ -96,6 +96,12 @@ class MainVC: FormViewController {
     
     }
     
+    @IBOutlet var connectBtn: UIBarButtonItem!
+    
+    @IBAction func connectBtnClick(_ sender: Any) {
+        refreshData()
+    }
+    
     func refreshData() {
         struct DecodableType: Decodable { let url: String }
         AF.request(Settings.shared.addr).responseString() { response in
@@ -117,7 +123,10 @@ class MainVC: FormViewController {
 //                    print(self.state)
                     self.form.setValues(state)
                     self.tableView?.reloadData()
+                    self.connectBtn.tintColor = .green
                 }
+            } else {
+                self.connectBtn.tintColor = .red
             }
         }
     }
