@@ -59,6 +59,9 @@ class ConfigVC: FormViewController {
         <<< TextRow(){ $0.title = "filterPrsID:"; $0.value = Settings.shared.filterPrsID; $0.tag = "filterPrsID" }
         <<< TextRow(){ $0.title = "waterLevelID:"; $0.value = Settings.shared.waterLevelID; $0.tag = "waterLevelID" }
     
+        +++ Section("Идентификаторы оборудования")
+        <<< TextRow(){ $0.title = "Имя lightExt:"; $0.value = Settings.shared.lightExtName; $0.tag = "lightExtName" }
+        
         +++ Section("")
         <<< ButtonRow(){ $0.title = "Записать"}.onCellSelection{ _,_ in self.saveSettings() }
         

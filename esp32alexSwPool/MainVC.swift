@@ -12,7 +12,10 @@ import Eureka
 
 var state = [String:Any]()
 
+var waitCmdExec = false;
+
 func sendCommand(_ cmd: String) {
+    waitCmdExec = true
     AF.request(Settings.shared.addr + "/exec?cmd=\(cmd)", method: .get)
       .authenticate(username: Settings.shared.login, password: Settings.shared.pwd)
       .response { response in
@@ -93,7 +96,12 @@ class MainVC: FormViewController {
         
         if Settings.shared.autoRefresh {
             refreshTimer = Timer.scheduledTimer(withTimeInterval: Settings.shared.refreshPeriod, repeats: true, block: { _ in
-                self.refreshData()
+                if waitCmdExec {
+                    waitCmdExec = false
+                    return
+                } else {
+                    self.refreshData()
+                }
             })
         }
 

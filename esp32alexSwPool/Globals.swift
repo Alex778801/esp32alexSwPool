@@ -49,7 +49,7 @@ extension Settings {
     }
     
     var refreshPeriod: Double {
-        get { read() ?? 5 }
+        get { read() ?? 6 }
         set { write(newValue) }
     }
     
@@ -100,6 +100,11 @@ extension Settings {
     
     var waterLevelID: String {
         get { read() ?? "AI1" }
+        set { write(newValue) }
+    }
+    
+    var lightExtName: String {
+        get { read() ?? "Внешний свет" }
         set { write(newValue) }
     }
     
