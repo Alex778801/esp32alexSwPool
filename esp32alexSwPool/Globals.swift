@@ -69,12 +69,12 @@ extension Settings {
     }
     
     var pumpRelayID: String {
-        get { read() ?? "R2" }
+        get { read() ?? "R4" }
         set { write(newValue) }
     }
     
     var heaterRelayID: String {
-        get { read() ?? "R3" }
+        get { read() ?? "R0" }
         set { write(newValue) }
     }
     
@@ -84,7 +84,7 @@ extension Settings {
     }
     
     var lightExtRelayID: String {
-        get { read() ?? "R0" }
+        get { read() ?? "R2" }
         set { write(newValue) }
     }
 
@@ -94,12 +94,12 @@ extension Settings {
     }
 
     var filterPrsID: String {
-        get { read() ?? "AI1" }
+        get { read() ?? "AI2" }
         set { write(newValue) }
     }
     
     var waterLevelID: String {
-        get { read() ?? "AI2" }
+        get { read() ?? "AI1" }
         set { write(newValue) }
     }
     
