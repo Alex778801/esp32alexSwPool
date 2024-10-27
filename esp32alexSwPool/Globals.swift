@@ -110,7 +110,6 @@ extension Settings {
     
 }
 
-
 func n2b(_ number: Int?) -> Bool? {
     if let number {
         return !(number == 0)

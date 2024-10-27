@@ -81,7 +81,7 @@ class MainVC: FormViewController {
         <<< DecimalRow(){ $0.title = "Давление в фильтре:";     $0.tag = Settings.shared.filterPrsID; $0.baseCell.isUserInteractionEnabled = false; }
         <<< DecimalRow(){ $0.title = "Уровень воды:";           $0.tag = Settings.shared.waterLevelID; $0.baseCell.isUserInteractionEnabled = false; }
         +++ Section("Освещение")
-        <<< SwitchRow(){ $0.title = "Внешний свет:";        $0.tag = Settings.shared.lightExtRelayID }
+        <<< SwitchRow(){ $0.title = "\(Settings.shared.lightExtName):";        $0.tag = Settings.shared.lightExtRelayID }
             .onChange{ row in self.switchCmd(rid: Settings.shared.lightExtRelayID, value: row.value) }
         <<< SwitchRow(){ $0.title = "Подстветка воды:";     $0.tag = Settings.shared.lightWaterRelayID }
             .onChange{ row in self.switchCmd(rid: Settings.shared.lightWaterRelayID, value: row.value) }
